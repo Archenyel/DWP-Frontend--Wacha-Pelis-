@@ -1,0 +1,13 @@
+.center-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente */
+    justify-content: center; /* Centra verticalmente */
+    height: 100%; /* Asegura que ocupe toda la altura */
+  }
+
+  .custom-button {
+    width: 150px;
+    height: 50px;
+    margin-bottom: 20px; /* Espacio entre botones */
+  }
