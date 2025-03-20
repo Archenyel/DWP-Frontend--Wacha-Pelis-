@@ -1,13 +1,63 @@
-.center-buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centra horizontalmente */
-    justify-content: center; /* Centra verticalmente */
-    height: 100%; /* Asegura que ocupe toda la altura */
-  }
+.profile-container {
+  margin-top: 20px;
+}
 
-  .custom-button {
-    width: 150px;
-    height: 50px;
-    margin-bottom: 20px; /* Espacio entre botones */
-  }
+.profile-header {
+  height: 20%;
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  background-color: #f0f2f5;
+  border-radius: 8px 8px 0 0;
+  padding: 0 20px;
+}
+
+.profile-content {
+  height: 80%;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 0 0 8px 8px;
+}
+
+.profile-sidebar {
+  height: 80%;
+  padding: 20px;
+  background-color: #f0f2f5;
+  border-radius: 0 0 8px 8px;
+}
+
+.custom-button {
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #1890ff;
+  border-color: #1890ff;
+}
+
+.custom-button:hover {
+  background-color: #1890ff;
+  color: #fff;
+}
+
+.center-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-icon {
+  font-size: 32px;
+  color: #1890ff;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}

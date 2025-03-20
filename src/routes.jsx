@@ -11,6 +11,7 @@ import Profil from "./pages/Profil";
 import Register from "./pages/Register";
 import Review from "./pages/Review";
 import NotFound from "./pages/NotFound";
+import NewList from "./pages/NewList";
 
 const AppRoutes = () => {
   return (
@@ -25,6 +26,7 @@ const AppRoutes = () => {
         <Route path="newreview" element={<NewReview />} />
         <Route path="profil" element={<Profil />} />
         <Route path="review" element={<Review />} />
+        <Route path="newlist" element={<NewList />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
