@@ -35,7 +35,7 @@ const MainLayout = () => {
         </Menu>
       </Header>
 
-      <Content style={{ backgroundColor: "#f9f9f9", }}>
+      <Content  style={{ backgroundColor: "#f9f9f9",  }}>
         <Outlet />
       </Content>
 

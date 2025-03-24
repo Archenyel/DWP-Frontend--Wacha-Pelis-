@@ -1,7 +1,8 @@
 import { Form, Input, Button, Card, message, Col, Row } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import loginImage from "../assets/login.jpg"
+import loginImage from "../assets/login.jpg";
+import api from "../api/apiClient";
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -10,15 +11,28 @@ const Login = () => {
   const onFinish = async (values) => {
     setLoading(true);
 
-    setTimeout(() => {
-      if (values.username === "admin" && values.password === "1234") {
-        message.success("Inicio de sesión exitoso");
-        navigate("/dashboard"); // Redirige al dashboard
+    try {
+      const response = await api.post("/login", {
+        email: values.email,
+        password: values.password,
+      });
+
+      const { token, user } = response.data;
+
+      localStorage.setItem("authToken", token);
+
+      message.success(`Bienvenido, ${user.name}!`);
+    } catch (error) {
+      if (error.response) {
+        const errorMsg =
+          error.response.data?.message || "Credenciales inválidas";
+        message.error(errorMsg);
       } else {
-        message.error("Usuario o contraseña incorrectos");
+        message.error("Error de conexión");
       }
+    } finally {
       setLoading(false);
-    }, 1000);
+    }
   };
 
   return (
@@ -28,10 +42,15 @@ const Login = () => {
       </Col>
       <Col md={8} sm={24}>
         <Card title="Iniciar Sesión">
-          <Form name="login" onFinish={onFinish} layout="vertical" style={{marginBlock: "10%"}}>
+          <Form
+            name="login"
+            onFinish={onFinish}
+            layout="vertical"
+            style={{ marginBlock: "10%" }}
+          >
             <Form.Item
-              label="Usuario"
-              name="username"
+              label="email"
+              name="email"
               rules={[
                 { required: true, message: "Por favor ingresa tu usuario" },
               ]}

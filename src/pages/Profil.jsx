@@ -42,6 +42,7 @@ const UserInfo = ({ user }) => {
 };
 
 const Profil = () => {
+  
   const user = {
     name: "Juan Pérez",
     email: "juan.perez@example.com",
