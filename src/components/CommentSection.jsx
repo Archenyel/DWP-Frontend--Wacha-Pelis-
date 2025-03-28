@@ -1,26 +1,29 @@
 import { useState } from "react";
 import { Card, Form, Input, Button, List, Rate } from "antd";
+import postReview from "../api/postReview";
 
-const CommentSection = () => {
-  const [comments, setComments] = useState([]);
-
+const CommentSection = ({ id }) => {
+  const [rate, setRate] = useState(0);
   const onFinish = (values) => {
-    if (!values.comment.trim()) return;
+    if (!values.review.trim()) return;
 
-    const newComment = {
-      id: Date.now(),
-      text: values.comment,
-    };
-
-    setComments([...comments, newComment]);
+    values.rate = rate;
+    values.name = "Anonymous";
+    postReview(id, values)
+      .then((response) => {
+        console.log("Review posted successfully:", response);
+      })
+      .catch((error) => {
+        console.error("Error posting review:", error);
+      });
   };
 
   return (
-    <Card title="Review">
+    <Card title="Deja tu opinion de la pelicula para ayudar a otros">
       <Form onFinish={onFinish} layout="vertical">
-        <Rate allowHalf defaultValue={4.5} />
+        <Rate allowHalf onChange={setRate} defaultValue={0} />
         <Form.Item
-          name="comment"
+          name="review"
           rules={[{ required: true, message: "Escribe una review" }]}
         >
           <Input.TextArea
@@ -35,16 +38,6 @@ const CommentSection = () => {
           </Button>
         </Form.Item>
       </Form>
-
-      <List
-        dataSource={comments}
-        renderItem={(item) => (
-          <List.Item key={item.id}>
-            <Card style={{ width: "100%" }}>{item.text}</Card>
-          </List.Item>
-        )}
-        locale={{ emptyText: "No hay comentarios aún" }}
-      />
     </Card>
   );
 };

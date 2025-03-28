@@ -23,9 +23,9 @@ const AppRoutes = () => {
         <Route path="aboutus" element={<AboutUs />} />
         <Route path="lists" element={<Lists />} />
         <Route path="mylists" element={<MyLists />} />
-        <Route path="newreview" element={<NewReview />} />
+        <Route path="newreview/:id" element={<NewReview />} />
         <Route path="profil" element={<Profil />} />
-        <Route path="review" element={<Review />} />
+        <Route path="review/:id" element={<Review />} />
         <Route path="newlist" element={<NewList />} />
       </Route>
       <Route path="*" element={<NotFound />} />

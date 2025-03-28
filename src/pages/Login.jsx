@@ -12,7 +12,7 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const response = await api.post("/login", {
+      const response = await api.post("/auth/login", {
         email: values.email,
         password: values.password,
       });
@@ -28,7 +28,7 @@ const Login = () => {
           error.response.data?.message || "Credenciales inválidas";
         message.error(errorMsg);
       } else {
-        message.error("Error de conexión");
+        message.error("Error de conexión desde login");
       }
     } finally {
       setLoading(false);

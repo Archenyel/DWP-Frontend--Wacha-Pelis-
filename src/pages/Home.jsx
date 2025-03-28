@@ -1,15 +1,30 @@
 import React from "react";
-import { Col, Row, Carousel, Image, Flex } from "antd";
+import { Col, Row, Carousel, Image, Flex, Spin } from "antd";
 import BasicList from "../components/BasicList";
+import useMovies from "../api/useMovies";
 const contentStyle = {
   color: "#fff",
   background: "#364d79",
 };
 
 const Home = () => {
+  const { movies, loading, error } = useMovies();
+
+  if (loading) {
+    return (
+      <Spin
+        size="large"
+        style={{ display: "block", margin: "auto", marginTop: "50px" }}
+      />
+    );
+  }
+  if (error) {
+    return <p>Hubo un error al cargar las películas</p>;
+  }
+
   return (
     <>
-      <Row justify={"center"} style={{ marginTop: "20px" }}>
+      <Row justify={"center"}>
         <Col sm={24} xs={24}>
           <Carousel autoplay>
             <div>
@@ -71,10 +86,16 @@ const Home = () => {
           </Carousel>
         </Col>
       </Row>
-      <BasicList/>
-      <BasicList/>
-      <BasicList/>
-      <BasicList/>
+      <Row justify={"space-evenly"}>
+        {movies.map((movie) => (
+          <BasicList
+            key={movie.id}
+            id={movie.id}
+            title={movie.title}
+            imageUrl={movie.imageUrl}
+          />
+        ))}
+      </Row>
     </>
   );
 };

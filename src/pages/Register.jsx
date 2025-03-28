@@ -10,7 +10,7 @@ const Register = () => {
   const onFinish = async (values) => {
     setLoading(true);
     try {
-      const response = await api.post("/register", values);
+      const response = await api.post("/auth/register", values);
       message.success("¡Registro exitoso!");
       console.log("Usuario creado:", response.data);
     } catch (error) {
@@ -70,7 +70,8 @@ const Register = () => {
               { required: true, message: "Contraseña obligatoria" },
               { min: 6, message: "Mínimo 6 caracteres" },
               {
-                pattern: /^(?=.*[A-Z])(?=.*\d).+$/,
+                //se desactiva el patron de contraseña por motivos de desarrollo
+                //pattern: /^(?=.*[A-Z])(?=.*\d).+$/,
                 message: "Debe incluir al menos una mayúscula y un número",
               },
             ]}

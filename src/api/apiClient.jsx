@@ -1,11 +1,35 @@
-import axios from 'axios';
+import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: 'http://localhost:3000/',
-  timeout: 5000, 
+  baseURL: "http://localhost:3000/",
+  timeout: 5000,
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 });
+
+apiClient.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("authToken");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
+apiClient.interceptors.response.use(
+  (response) => {
+    // Si la petición fue exitosa, devuelve la respuesta tal cual
+    return response;
+  },
+  (error) => {
+    // Si hubo un error en la petición, devuelve el error tal cual
+    return Promise.reject(error);
+  }
+);
 
 export default apiClient;

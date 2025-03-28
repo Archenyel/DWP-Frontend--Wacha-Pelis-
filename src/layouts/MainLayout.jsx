@@ -24,13 +24,13 @@ const MainLayout = () => {
             <Link to="/">Inicio</Link>
           </Menu.Item>
           <Menu.Item key="2">
-            <Link to="/aboutus">Contacto</Link>
+            <Link to="/lists">listas</Link>
           </Menu.Item>
           <Menu.Item key="3">
             <Link to="/profil">Mi perfil</Link>
           </Menu.Item>
-          <Menu.Item key="4" icon={<BarsOutlined />}>
-            <Link to="/about"></Link>
+          <Menu.Item key="4">
+            <Link to="/aboutus">contacto</Link>
           </Menu.Item>
         </Menu>
       </Header>
