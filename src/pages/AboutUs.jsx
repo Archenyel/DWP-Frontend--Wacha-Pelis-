@@ -11,7 +11,7 @@ const AboutUs = () => {
     <Row
       justify="center"
       align="middle"
-      style={{ minHeight: "100vh", padding: "20px" }}
+      style={{ backgroundColor: "white", padding: 20, borderRadius: 10, margin: 20 }}
     >
       <Col xs={24} md={8} style={{ textAlign: "justify", padding: "0px" }}>
         <img

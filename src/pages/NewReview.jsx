@@ -27,7 +27,7 @@ const NewReview = () => {
         <Image
           src={movie.imageUrl}
           alt="Placeholder"
-          width={"50%"}
+          width={"30%"}
           style={{ marginRight: "20px" }}
         />
         <div style={{ width: "50%", marginLeft: "20px" }}>

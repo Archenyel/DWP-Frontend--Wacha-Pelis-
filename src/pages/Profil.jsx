@@ -1,86 +1,104 @@
-import React from "react";
-import { Col, Row, Button, Input, Card, Avatar, Typography } from "antd";
+import React, { useState, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import {
-  UserOutlined,
-  MailOutlined,
-  EnvironmentOutlined,
-} from "@ant-design/icons";
-import "./profile.css";
+  Col,
+  Row,
+  Button,
+  Input,
+  Card,
+  Avatar,
+  Typography,
+  message,
+} from "antd";
+import getUserData from "../api/getUserData";
+import updateUserData from "../api/updateUserData";
 
-const { Title, Text } = Typography;
-
-const UserInfo = ({ user }) => {
-  return (
-    <Row style={{ backgroundColor: "#f0f2f5", marginInline: "15%" }}>
-      <Col
-        md={24}
-        sm={24}
-        style={{ backgroundColor: "#bfbfbf", textAlign: "center" }}
-      >
-        <p>Informacion de la cuenta</p>
-      </Col>
-      <Col md={12} sm={24}>
-        <p>
-          Nombre: <Text strong>{user.name}</Text>
-        </p>
-        <p>
-          Telefono: <Text strong>{user.number}</Text>
-        </p>
-        <p>
-          correo: <Text strong>{user.email}</Text>
-        </p>
-      </Col>
-      <Col md={12} sm={24} style={{ textAlign: "center" }}>
-        <img
-          style={{ width: "70%", margin: "5px" }}
-          src="https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671142.jpg?t=st=1742500359~exp=1742503959~hmac=daae381ef4b5629888d5484807861a8d3a9f6cc001f8e51351987860961da420&w=740"
-          alt=""
-        />
-      </Col>
-    </Row>
-  );
-};
+const { Title } = Typography;
 
 const Profil = () => {
-  
-  const user = {
-    name: "Juan Pérez",
-    email: "juan.perez@example.com",
-    number: "999-999-99",
+  const navigate = useNavigate();
+  const userId = localStorage.getItem("userId");
+  console.log(userId);
+  const { user: initialUser, loading, error } = getUserData(userId);
+
+  const [user, setUser] = useState({ name: "", phone: "", address: "" });
+
+  useEffect(() => {
+    if (initialUser) {
+      setUser(initialUser);
+    }
+  }, [initialUser]);
+
+  const closesesion = () => {
+    localStorage.clear();
+    message.success("Sesión cerrada correctamente");
+    navigate("/login");
+  };
+
+  const handleChange = (key, value) => {
+    setUser((prevUser) => ({ ...prevUser, [key]: value }));
+  };
+
+  const handleSave = async () => {
+    updateUserData(userId, user);
   };
 
   return (
-    <Row justify="center" className="profile-container">
-      <Col md={20} style={{ height: "70vh" }}>
-        <Row align="middle" justify="center" style={{ height: "100%" }}>
-          {/* Encabezado con ícono de perfil */}
-          <Col md={24} sm={24} className="profile-header">
-            <UserOutlined
-              style={{ marginRight: "20px" }}
-              className="profile-icon"
-            />
-            Mi perfil
-          </Col>
+    <Row justify="center" gutter={[48, 16]} style={{ marginTop: 20 }}>
+      <Col md={12} sm={24}>
+        <Card title="Información del Usuario">
+          <Avatar
+            size={100}
+            src={`https://robohash.org/${user.name}.png?set=set4`}
+            style={{ marginBottom: 20 }}
+          />
+          <p>
+            <strong>Nombre:</strong>
+          </p>
+          <Input
+            value={user.name}
+            onChange={(e) => handleChange("name", e.target.value)}
+          />
 
-          {/* Contenido principal con información del usuario */}
-          <Col md={18} sm={24} className="profile-content">
-            <UserInfo user={user} />
-            <Button
-              className="custom-button"
-              style={{ marginTop: "20px", marginInline: "25%", width: "50%" }}
-            >
-              Cambiar información de la cuenta
+          <p style={{ marginTop: 10 }}>
+            <strong>Teléfono:</strong>
+          </p>
+          <Input
+            value={user.phone}
+            onChange={(e) => handleChange("phone", e.target.value)}
+          />
+
+          <p style={{ marginTop: 10 }}>
+            <strong>Dirección:</strong>
+          </p>
+          <Input
+            value={user.address}
+            onChange={(e) => handleChange("address", e.target.value)}
+          />
+
+          <Button type="primary" style={{ marginTop: 20 }} onClick={handleSave}>
+            Guardar
+          </Button>
+        </Card>
+      </Col>
+      <Col md={5} sm={24}>
+        <Card title="Acciones">
+          <Link to="/MyReviews">
+            <Button block style={{ marginBottom: 10 }}>
+              Mis reviews
             </Button>
-          </Col>
+          </Link>
 
-          {/* Barra lateral con botones */}
-          <Col md={6} sm={24} className="profile-sidebar center-buttons">
-            <Button className="custom-button">Mis listas</Button>
-            <Button className="custom-button">mis reseñas</Button>
-            <Button className="custom-button">Categorias</Button>
-            <Button className="custom-button">cerrar sesion</Button>
-          </Col>
-        </Row>
+          <Link to="/MyLists">
+            <Button block style={{ marginBottom: 10 }}>
+              Mis listas
+            </Button>
+          </Link>
+
+          <Button block onClick={closesesion} style={{ marginBottom: 10 }}>
+            Cerrar sesión
+          </Button>
+        </Card>
       </Col>
     </Row>
   );

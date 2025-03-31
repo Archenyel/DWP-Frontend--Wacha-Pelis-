@@ -12,7 +12,7 @@ const Register = () => {
     try {
       const response = await api.post("/auth/register", values);
       message.success("¡Registro exitoso!");
-      console.log("Usuario creado:", response.data);
+      navigate("/login");
     } catch (error) {
       message.error(error.response?.data?.error || "Error al registrar");
     }
@@ -25,7 +25,6 @@ const Register = () => {
         justifyContent: "center",
         alignItems: "center",
         height: "100vh",
-        background: "#f0f2f5",
       }}
     >
       <Card

@@ -1,22 +1,16 @@
 import { useState, useEffect } from "react";
 import apiClient from "./apiClient";
 
-const getLists = ({ userId }) => {
-  const [lists, setMovieLists] = useState([]);
+const getUserData = (id) => {
+  const [user, setUser] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  let url = `/lists`;
-  if (userId !== 0) {
-    url = `/lists/${userId}`;
-  }
 
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await apiClient.get(url);
-        setMovieLists(response.data);
-        console.log(response.data);
+        const response = await apiClient.get("/users/" + id);
+        setUser(response.data);
       } catch (error) {
         setError(error);
       } finally {
@@ -27,10 +21,10 @@ const getLists = ({ userId }) => {
     fetchReviews();
   }, []);
   return {
-    lists,
+    user,
     loading,
     error,
   };
 };
 
-export default getLists;
+export default getUserData;

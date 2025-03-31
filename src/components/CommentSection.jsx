@@ -1,17 +1,21 @@
 import { useState } from "react";
-import { Card, Form, Input, Button, List, Rate } from "antd";
+import { Card, Form, Input, Button, List, Rate, message } from "antd";
 import postReview from "../api/postReview";
 
 const CommentSection = ({ id }) => {
+  const [form] = Form.useForm();
   const [rate, setRate] = useState(0);
   const onFinish = (values) => {
     if (!values.review.trim()) return;
 
     values.rate = rate;
-    values.name = "Anonymous";
+    values.name = localStorage.getItem("user");
+    values.userId = localStorage.getItem("userId");
+
     postReview(id, values)
       .then((response) => {
-        console.log("Review posted successfully:", response);
+        message.success("Review publicada con éxito");
+
       })
       .catch((error) => {
         console.error("Error posting review:", error);
@@ -20,7 +24,7 @@ const CommentSection = ({ id }) => {
 
   return (
     <Card title="Deja tu opinion de la pelicula para ayudar a otros">
-      <Form onFinish={onFinish} layout="vertical">
+      <Form form={form} onFinish={onFinish} layout="vertical">
         <Rate allowHalf onChange={setRate} defaultValue={0} />
         <Form.Item
           name="review"

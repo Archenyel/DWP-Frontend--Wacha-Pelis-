@@ -1,6 +1,7 @@
 import { Layout, Menu } from "antd";
 import { Link, Outlet } from "react-router-dom";
 import { HomeOutlined, BarsOutlined } from "@ant-design/icons";
+import "./Maincss.css";
 
 const { Header, Content, Footer } = Layout;
 
@@ -35,7 +36,7 @@ const MainLayout = () => {
         </Menu>
       </Header>
 
-      <Content  style={{ backgroundColor: "#f9f9f9",  }}>
+      <Content className="backgroundE">
         <Outlet />
       </Content>
 

@@ -1,14 +1,25 @@
 import React from "react";
-import { Col, Row, Carousel, Image, Flex, Spin } from "antd";
+import { Col, Row, Carousel, Image, Spin, Typography, Button } from "antd";
+import { Link } from "react-router-dom";
 import BasicList from "../components/BasicList";
 import useMovies from "../api/useMovies";
+
 const contentStyle = {
   color: "#fff",
+  textAlign: "center",
   background: "#364d79",
+};
+
+const imgStyle = {
+  marginTop: "2px",
+  marginBottom: "2px",
+  display: "block",
+  width: 273,
 };
 
 const Home = () => {
   const { movies, loading, error } = useMovies();
+  const sortMovies = movies.slice().sort(() => Math.random() - 0.5);
 
   if (loading) {
     return (
@@ -24,68 +35,62 @@ const Home = () => {
 
   return (
     <>
-      <Row justify={"center"}>
-        <Col sm={24} xs={24}>
-          <Carousel autoplay>
-            <div>
-              <div style={contentStyle}>
-                <Flex justify={"center"}>
+      <Typography.Title
+        level={2}
+        style={{
+          color: "white",
+        }}
+      >
+        Peliculas destacadas
+      </Typography.Title>
+      <Row
+        justify="center"
+        style={{
+          maxWidth: "100vw",
+          backgroundColor: "#364d79",
+          margin: "auto",
+        }}
+      >
+        <Col sm={8} xs={8}>
+          <Carousel autoplay arrows>
+            {sortMovies.slice(0, 3).map((movie) => (
+              <div key={movie.id}>
+                <div style={contentStyle}>
                   <Image
-                    //width={"25vw"}
-                    height={"50vh"}
-                    src="https://img.freepik.com/vector-gratis/cartel-evento-musica-moderna-trazo-pincel-abstracto_1361-1917.jpg?t=st=1741900475~exp=1741904075~hmac=dc67fa94b39dd60aa08fbb82cd3497a03b5f33c4f4ffaa14159d7d8349c3999c&w=740"
+                    src={movie.imageUrl}
+                    alt={movie.title}
+                    style={imgStyle}
                   />
-                  <div
+
+                  <Typography.Title
+                    level={4}
                     style={{
-                      backgroundColor: "black",
-                      width: "25vw",
-                      padding: "10px",
+                      color: "#fff",
+                      marginTop: "0px",
+                      marginBottom: "0px",
                     }}
                   >
-                    <h2>Titulo</h2>
-                    <p>
-                      {" "}
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Nesciunt, necessitatibus molestias illo aliquam autem
-                      dolorem saepe maiores sed minus deleniti quibusdam debitis
-                      harum minima blanditiis architecto? Dolor ducimus debitis
-                      at.
-                    </p>
-                  </div>
-                </Flex>
+                    {movie.title}
+                  </Typography.Title>
+                  <Link to={`/review/${movie.id}`}>
+                    <Button type="primary" style={{ marginBottom: "18px" }}>
+                      Reseñas de los usuarios
+                    </Button>
+                  </Link>
+                </div>
               </div>
-            </div>
-            <div>
-              <div style={contentStyle}>
-                <Flex justify={"center"}>
-                  <Image
-                    //width={"25vw"}
-                    height={"50vh"}
-                    src="https://img.freepik.com/psd-gratis/plantilla-poster-negro-vive-importa_23-2148585425.jpg?t=st=1741900522~exp=1741904122~hmac=e6479cc69ab3109e7ddbe424f88dac1b9da970a6ddc1624ab31c81fc4362e3cc&w=740"
-                  />
-                  <div
-                    style={{
-                      backgroundColor: "black",
-                      width: "25vw",
-                      padding: "10px",
-                    }}
-                  >
-                    <h2>Titulo</h2>
-                    <p>
-                      {" "}
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Nesciunt, necessitatibus molestias illo aliquam autem
-                      dolorem saepe maiores sed minus deleniti quibusdam debitis
-                      harum minima blanditiis architecto? Dolor ducimus debitis
-                      at.
-                    </p>
-                  </div>
-                </Flex>
-              </div>
-            </div>
+            ))}
           </Carousel>
         </Col>
       </Row>
+      <Typography.Title
+        level={2}
+        style={{
+          color: "white",
+        }}
+      >
+        Catalogo
+      </Typography.Title>
       <Row justify={"space-evenly"}>
         {movies.map((movie) => (
           <BasicList
