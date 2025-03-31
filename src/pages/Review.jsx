@@ -14,7 +14,7 @@ import {
 } from "antd";
 import { useParams, Link } from "react-router-dom";
 import getMovie from "../api/getMovieInfo";
-import getReviews from "../api/getreviews";
+import getReviews from "../api/getReviews";
 import getLists from "../api/getLists";
 import apiClient from "../api/apiClient";
 
