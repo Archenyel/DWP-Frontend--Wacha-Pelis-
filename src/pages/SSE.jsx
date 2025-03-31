@@ -10,7 +10,9 @@ const MovieComments = () => {
   const [eventSource, setEventSource] = useState(null);
 
   const connectToSSE = () => {
-    const source = new EventSource("http://localhost:3000/sse/comments");
+    const source = new EventSource(
+      "https://wachapelisbackend.onrender.com/sse/comments"
+    );
 
     source.onopen = () => {
       setIsConnected(true);
