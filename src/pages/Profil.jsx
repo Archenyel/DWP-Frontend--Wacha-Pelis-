@@ -14,6 +14,8 @@ import getUserData from "../api/getUserData";
 import updateUserData from "../api/updateUserData";
 
 const { Title } = Typography;
+//este componente es el perfil del usuario, donde se muestra su información y se puede editar
+//también se pueden ver las listas y reviews del usuario, y cerrar sesión
 
 const Profil = () => {
   const navigate = useNavigate();

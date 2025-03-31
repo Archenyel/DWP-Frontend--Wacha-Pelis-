@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import { Form, Input, Button, Card, message } from "antd";
 import postList from "../api/postList";
 
+//este componente es para crear una nueva lista de películas
+//se utiliza el hook useState para manejar el estado de la carga
+//se utiliza el hook useEffect para manejar el estado de la carga
+//se utiliza el hook useHistory para redirigir al usuario a la página de listas
+
 const NewList = () => {
   const userId = localStorage.getItem("userId");
   const [loading, setLoading] = useState(false);

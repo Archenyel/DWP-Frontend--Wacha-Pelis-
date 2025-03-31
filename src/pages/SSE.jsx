@@ -4,6 +4,12 @@ import { CommentOutlined, CloseOutlined } from "@ant-design/icons";
 
 const { Title, Text } = Typography;
 
+//este componente es para mostrar los comentarios de las peliculas en tiempo real
+//se conecta a un servidor SSE (Server-Sent Events) y muestra los comentarios en una lista
+//el servidor envía los comentarios cada 3 segundos y el cliente los recibe y los muestra en la lista
+//el cliente puede conectarse y desconectarse del servidor
+//el cliente muestra un mensaje de error si no puede conectarse al servidor
+//el cliente muestra un mensaje de éxito si se conecta al servidor
 const MovieComments = () => {
   const [comments, setComments] = useState([]);
   const [isConnected, setIsConnected] = useState(false);

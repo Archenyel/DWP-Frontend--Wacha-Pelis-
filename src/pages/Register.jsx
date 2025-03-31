@@ -3,6 +3,15 @@ import { useNavigate } from "react-router-dom";
 import api from "../api/apiClient";
 import { useState } from "react";
 
+
+// Este componente es la página de registro de usuario
+// Se utiliza para crear una nueva cuenta de usuario en la aplicación
+// Se utiliza el hook useNavigate de react-router-dom para redirigir al usuario después de registrarse
+// Se utiliza el hook useState para manejar el estado de carga del formulario
+// Se utiliza el componente Form de antd para crear el formulario de registro
+// Se utiliza el componente Input de antd para los campos de entrada
+// Se utiliza el componente Button de antd para el botón de envío
+
 const Register = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();

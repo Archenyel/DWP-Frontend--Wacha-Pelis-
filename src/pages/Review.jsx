@@ -18,6 +18,13 @@ import getReviews from "../api/getReviews";
 import getLists from "../api/getLists";
 import apiClient from "../api/apiClient";
 
+//este componente es para ver la reseña de una pelicula y agregarla a una lista
+//tambien se pueden ver las reseñas de los usuarios
+//se usa el hook useParams para obtener el id de la pelicula
+//se usa el hook useState para manejar el estado de la lista seleccionada y si se esta agregando o no
+//se usa el hook useEffect para obtener la pelicula y las reseñas de la api
+//se usa el hook useHistory para redirigir al usuario a la pagina de reseñas
+
 const { Title, Paragraph } = Typography;
 const { Option } = Select;
 

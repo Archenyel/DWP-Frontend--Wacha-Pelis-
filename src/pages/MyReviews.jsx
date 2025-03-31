@@ -4,6 +4,11 @@ import apiClient from "../api/apiClient";
 
 const { Title } = Typography;
 
+//este componente muestra las reseñas del usuario logueado
+//elimina una reseña al hacer click en el boton eliminar
+//elimina la reseña de la base de datos y actualiza el estado local
+//muestra un spinner mientras se cargan las reseñas
+
 const MyReviews = () => {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);

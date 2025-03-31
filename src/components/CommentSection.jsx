@@ -2,6 +2,10 @@ import { useState } from "react";
 import { Card, Form, Input, Button, List, Rate, message } from "antd";
 import postReview from "../api/postReview";
 
+// este componente es el que se encarga de mostrar el formulario para dejar una review y el listado de reviews
+// de la pelicula. Se le pasa el id de la pelicula como prop y se encarga de hacer la peticion a la api para dejar la review
+// y de mostrar el listado de reviews. Se le pasa el id de la pelicula como prop y se encarga de hacer la peticion a la api para dejar la review
+
 const CommentSection = ({ id }) => {
   const [form] = Form.useForm();
   const [rate, setRate] = useState(0);

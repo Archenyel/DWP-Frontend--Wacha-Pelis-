@@ -2,6 +2,10 @@ import ListsComponent from "../components/listsComponent";
 import { EditOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
+//esete el componente para que muestre las listas de un usuario
+// y un boton para crear una nueva lista
+// y un boton para ver las listas del usuario
+
 const Lists = () => {
   const bigbuttonStyle = {
     border: "none",

@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import apiClient from "./apiClient";
 
+//este hook es para obtener la info de una reseña en especifico
+//recibe el id de la reseña y devuelve la info, loading y error
+//se usa en el componente Reviews.jsx
+
 const getReviews = (id) => {
   const [reviews, setReviwes] = useState([]);
   const [loading, setLoading] = useState(true);

@@ -6,12 +6,20 @@ import {
   LinkedinOutlined,
 } from "@ant-design/icons";
 
+//este componente es el que se encarga de mostrar la pagina de about us
+//en esta pagina se muestra una breve descripcion de la pagina y un parrafo de bienvenida
+
 const AboutUs = () => {
   return (
     <Row
       justify="center"
       align="middle"
-      style={{ backgroundColor: "white", padding: 20, borderRadius: 10, margin: 20 }}
+      style={{
+        backgroundColor: "white",
+        padding: 20,
+        borderRadius: 10,
+        margin: 20,
+      }}
     >
       <Col xs={24} md={8} style={{ textAlign: "justify", padding: "0px" }}>
         <img
@@ -23,23 +31,16 @@ const AboutUs = () => {
       <Col xs={24} md={8} style={{ textAlign: "justify", padding: "20px" }}>
         <h2>Sobre Nosotros</h2>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ad,
-          perferendis nesciunt ea vero laudantium quasi a alias, esse omnis
-          assumenda voluptatum eum, corrupti nisi officiis! Sunt molestias ipsum
-          soluta? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis
-          eveniet ipsa omnis magni soluta officiis est consequatur qui esse
-          dolor quam aliquam necessitatibus, fuga distinctio debitis aperiam
-          cupiditate, magnam consectetur! Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Blanditiis commodi consequatur similique repellat
-          repudiandae! Molestiae deserunt adipisci expedita mollitia atque
-          autem, sit illo assumenda. Sunt voluptatibus dicta pariatur possimus
-          culpa? Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-          Recusandae dignissimos reiciendis rem excepturi tempora accusamus,
-          quia illo magni saepe, enim soluta repellat temporibus labore natus
-          impedit, tempore molestias quis. Esse. Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Assumenda neque fuga quisquam ipsum
-          natus obcaecati. Quod a temporibus rem atque fuga, quidem numquam,
-          praesentium, quam ipsum officia repellendus ducimus consequuntur.
+          Bienvenido a nuestra plataforma, el lugar ideal
+          para los amantes del cine que desean descubrir, compartir y comentar
+          sobre sus películas favoritas. Nuestra misión es crear un espacio
+          donde la comunidad cinéfila pueda interactuar, dejar reseñas y debatir
+          sobre los mejores (y peores) momentos del cine. Nuestra Historia Este
+          proyecto nació de la pasión por el séptimo arte y la tecnología.
+          Queríamos un sitio donde los usuarios pudieran no solo guardar sus
+          listas de películas, sino también compartirlas con otros, recibir
+          recomendaciones y mantenerse actualizados con las opiniones más
+          frescas sobre sus películas favoritas.
         </p>
       </Col>
 

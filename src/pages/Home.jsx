@@ -17,6 +17,15 @@ const imgStyle = {
   width: 273,
 };
 
+//este componente es el que se encarga de mostrar la pagina principal
+//en este caso la pagina principal es un catalogo de peliculas
+//y un carrusel de peliculas destacadas
+//el carrusel muestra 3 peliculas al azar de las peliculas destacadas
+//el catalogo muestra todas las peliculas disponibles en la api
+//el componente BasicList es el que se encarga de mostrar cada pelicula en el catalogo
+//el componente useMovies es el que se encarga de hacer la peticion a la api
+//y obtener las peliculas disponibles
+
 const Home = () => {
   const { movies, loading, error } = useMovies();
   const sortMovies = movies.slice().sort(() => Math.random() - 0.5);

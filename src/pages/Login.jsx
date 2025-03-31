@@ -4,6 +4,10 @@ import { use, useState } from "react";
 import loginImage from "../assets/login.jpg";
 import api from "../api/apiClient";
 
+//este componente es para el login de la aplicacion, se encarga de enviar el email y la contraseña al backend y 
+// recibir el token de autenticacion, si el login es exitoso se redirige a la pagina principal
+// si el login falla se muestra un mensaje de error
+
 const Login = () => {
   const [loading, setLoading] = useState(false);
   const [isCodeSent, setIsCodeSent] = useState(false);

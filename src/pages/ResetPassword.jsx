@@ -3,6 +3,11 @@ import { useState } from "react";
 import apiClient from "../api/apiClient";
 import { useNavigate } from "react-router-dom";
 
+//este componente es para restablecer la contraseña de un usuario
+//se le pide el correo, el código de recuperación y la nueva contraseña
+//cuando el usuario envía el formulario, se hace una petición a la API para restablecer la contraseña
+//si la petición es exitosa, se muestra un mensaje de éxito y se redirige al usuario a la página de login
+
 const ResetPassword = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();

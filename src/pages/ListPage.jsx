@@ -5,6 +5,15 @@ import apiClient from "../api/apiClient";
 
 const { Title } = Typography;
 
+//este componente se encarga de mostrar una lista de películas
+//recibe el id de la lista por la url y lo usa para hacer una peticion a la api
+//una vez que recibe la respuesta, muestra la lista de peliculas en una tarjeta
+//si la lista no tiene contenido, muestra un mensaje indicando que la lista esta vacia
+//si la lista tiene contenido, muestra la lista de peliculas en una tarjeta
+//cada pelicula tiene un boton para eliminarla de la lista
+//si el id de la pelicula es igual al id del usuario, muestra el boton de eliminar
+//si no, no muestra el boton de eliminar
+
 const ListPage = () => {
   const { id } = useParams(); // Obtiene el ID de la lista desde la URL
   const userId = localStorage.getItem("userId"); // Obtiene el ID del usuario desde el almacenamiento local

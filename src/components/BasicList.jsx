@@ -2,6 +2,11 @@ import React from "react";
 import { Image, Row, Col, Button } from "antd";
 import { Link } from "react-router-dom";
 
+//este componente es una lista de elementos que se muestran en la pantalla
+//recibe un objeto con la siguiente estructura: {title, imageUrl, id}
+//title es el nombre del elemento, imageUrl es la url de la imagen y id es el id del elemento
+//el componente se encarga de mostrar el nombre del elemento, la imagen y un boton que redirige a la pagina de reseñas del elemento
+
 const BasicList = ({ title, imageUrl, id }) => {
   return (
     <Col

@@ -8,6 +8,10 @@ import { useNavigate } from "react-router-dom";
 
 const { Title } = Typography;
 
+//este componente se encarga de mostrar las listas creadas por la comunidad
+//el componente recibe como props el id del usuario que ha iniciado sesion
+//si el id es 0 significa que el usuario es un visitante y no puede borrar listas
+
 const ListsComponent = ({ userId }) => {
   const navigate = useNavigate();
   const [key, setKey] = useState(0);

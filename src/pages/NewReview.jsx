@@ -5,6 +5,12 @@ import getMovie from "../api/getMovieInfo";
 import CommentSection from "../components/CommentSection";
 const { Title, Paragraph } = Typography;
 
+//este componente es para mostrar la pelicula y el formulario de reseñas
+//se le pasa el id de la pelicula por params
+//se hace una peticion a la api para obtener la informacion de la pelicula
+//se muestra la imagen, el titulo y la sinopsis de la pelicula
+//se muestra el formulario de reseñas
+
 const NewReview = () => {
   const { id } = useParams();
   const { movie, loading, error } = getMovie(id);

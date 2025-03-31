@@ -7,7 +7,7 @@ const apiClient = axios.create({
     "Content-Type": "application/json",
   },
 });
-
+// interceptor para manejar el token de autenticación y errores de respuesta
 apiClient.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("authToken");

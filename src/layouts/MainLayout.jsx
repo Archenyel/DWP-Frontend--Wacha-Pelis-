@@ -5,6 +5,9 @@ import "./Maincss.css";
 
 const { Header, Content, Footer } = Layout;
 
+//este componente es el layout principal de la aplicacion, donde se encuentra el header, el footer y el contenido de la pagina
+//el header contiene el logo y el menu de navegacion, el footer contiene el copyright y el contenido es donde se renderizan las rutas
+
 const MainLayout = () => {
   return (
     <Layout style={{ minHeight: "100vh" }}>

@@ -3,6 +3,8 @@ import { Form, Input, Button, Card, message } from "antd";
 import apiClient from "../api/apiClient";
 import { useNavigate } from "react-router-dom";
 
+//este componente es para la recuperación de contraseña, donde el usuario ingresa su correo electrónico y recibe un enlace para restablecer su contraseña
+
 const ForgotPassword = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
