@@ -22,7 +22,7 @@ const NewReview = () => {
       <Col
         xs={24}
         md={12}
-        style={{ display: "flex", alignItems: "center", marginTop: "2%" }}
+        style={{ display: "flex", alignItems: "center", marginTop: "2%", backgroundColor: "white", padding: "20px", borderRadius: "10px" }}
       >
         <Image
           src={movie.imageUrl}
@@ -30,7 +30,7 @@ const NewReview = () => {
           width={"30%"}
           style={{ marginRight: "20px" }}
         />
-        <div style={{ width: "50%", marginLeft: "20px" }}>
+        <div style={{ width: "50%", marginLeft: "20px", }}>
           <Title level={3}>{movie.title}</Title>
           <Paragraph>{movie.sinopsis}</Paragraph>
         </div>

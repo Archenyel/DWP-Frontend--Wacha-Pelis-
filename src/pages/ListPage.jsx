@@ -7,6 +7,8 @@ const { Title } = Typography;
 
 const ListPage = () => {
   const { id } = useParams(); // Obtiene el ID de la lista desde la URL
+  const userId = localStorage.getItem("userId"); // Obtiene el ID del usuario desde el almacenamiento local
+  console.log("userId", userId);
   const [list, setList] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -29,6 +31,7 @@ const ListPage = () => {
       try {
         const response = await apiClient.get(`/lists/content/${id}`);
         setList(response.data);
+        console.log("Lista obtenida:", response.data);
       } catch (error) {
         console.error("Error obteniendo la lista:", error);
       } finally {
@@ -46,7 +49,19 @@ const ListPage = () => {
         style={{ display: "block", margin: "auto", marginTop: "50px" }}
       />
     );
-  if (!list) return <div style={{backgroundColor:"white", textAlign:"center", fontSize:"40px", margin:"5%"}}>lista sin contenido.</div>;
+  if (!list)
+    return (
+      <div
+        style={{
+          backgroundColor: "white",
+          textAlign: "center",
+          fontSize: "40px",
+          margin: "5%",
+        }}
+      >
+        lista sin contenido.
+      </div>
+    );
 
   return (
     <div style={{ width: "50%", margin: "auto" }}>
@@ -62,14 +77,16 @@ const ListPage = () => {
                 title={<strong>{movie.title}</strong>}
                 description={movie.synopsis}
               />
-              <Button
-                color="pink"
-                variant="solid"
-                style={{ marginLeft: "auto" }}
-                onClick={deleteMovieFromList(movie.id, id)}
-              >
-                Borrar
-              </Button>
+              {String(movie.userId) == String(userId) && (
+                <Button
+                  color="pink"
+                  variant="solid"
+                  style={{ marginLeft: "auto" }}
+                  onClick={() => deleteMovieFromList(movie.id, id)}
+                >
+                  Borrar
+                </Button>
+              )}
             </List.Item>
           )}
         />

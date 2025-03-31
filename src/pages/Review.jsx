@@ -116,7 +116,15 @@ const Review = () => {
           </Link>
         </div>
       </Col>
-      <Col span={20} style={{ margin: "5%", backgroundColor: "white" , padding: "20px", borderRadius: "8px"}}>
+      <Col
+        span={20}
+        style={{
+          margin: "5%",
+          backgroundColor: "white",
+          padding: "20px",
+          borderRadius: "8px",
+        }}
+      >
         <Title level={4}>Opiniones de los usuarios</Title>
         <List
           itemLayout="horizontal"
@@ -130,7 +138,7 @@ const Review = () => {
                     src={`https://api.dicebear.com/7.x/miniavs/svg?seed=${index}`}
                   />
                 }
-                title={<a href="https://ant.design">{item.name}</a>}
+                title={<a href="https://ant.design">Anónimo</a>}
                 description={item.review}
               />
             </List.Item>
